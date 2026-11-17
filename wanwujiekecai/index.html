@@ -1,0 +1,1107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>万物皆可踩-城市漫步与踩点指南</title>
+<meta name="description" content="万物皆可踩，把城市里每一条街巷、每一处店铺都走成自己的地图。从踩点路线、店铺笔记到体验复盘，收录可核对的时间、地点与判断，给愿意走出门的人一份实在的漫步参考。">
+<meta name="keywords" content="万物皆可踩">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b3a2f'/%3E%3Cpath d='M14 44c8-2 12-10 18-18s10-8 18-8' stroke='%23e8c56a' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='46' cy='18' r='5' fill='%23e8c56a'/%3E%3Ccircle cx='18' cy='46' r='5' fill='%23f2f0e6'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#1d2a24;
+  --ink-soft:#41544a;
+  --paper:#f6f3ea;
+  --paper-2:#efe9da;
+  --card:#fffdf7;
+  --line:#d9d2bd;
+  --brand:#1b3a2f;
+  --brand-2:#2f5d4c;
+  --accent:#c9a227;
+  --accent-soft:#e8c56a;
+  --danger:#a6432f;
+  --radius:12px;
+  --radius-sm:8px;
+  --shadow:0 2px 10px rgba(27,58,47,.08);
+  --shadow-hover:0 6px 18px rgba(27,58,47,.14);
+  --space:clamp(14px,2.4vw,26px);
+  --maxw:1180px;
+  --header-h:64px;
+  --bar-h:40px;
+  --gap:clamp(14px,2vw,24px);
+  --fs-h1:clamp(1.9rem,4.4vw,3.3rem);
+  --fs-h2:clamp(1.25rem,2.2vw,1.6rem);
+  --fs-h3:clamp(1.02rem,1.5vw,1.15rem);
+  --fs-body:clamp(.95rem,1.1vw,1.02rem);
+  --fs-sm:.86rem;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + var(--bar-h) + 10px)}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+  font-size:var(--fs-body);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:var(--brand-2);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{margin:0;line-height:1.32;font-weight:700}
+p{margin:0 0 .8em}
+ul,ol{margin:0 0 .8em;padding-left:1.25em}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+/* 吸顶组合 */
+.sticky-stack{position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.announce{
+  background:var(--brand);
+  color:#eef3ee;font-size:.82rem;height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;
+  padding:0 14px;gap:10px;overflow:hidden;
+}
+.announce strong{color:var(--accent-soft);font-weight:700}
+.announce .ann-dot{width:7px;height:7px;border-radius:50%;background:var(--accent-soft);flex:none}
+.announce a{color:#f3e9c8;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.announce .ann-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header.site-head{
+  background:rgba(246,243,234,.96);backdrop-filter:blur(8px);
+  height:var(--header-h);display:flex;align-items:center;
+  border-bottom:1px solid var(--line);
+}
+.head-inner{
+  width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--space);
+  display:flex;align-items:center;gap:18px;
+}
+.brand{display:flex;align-items:center;gap:9px;flex:none}
+.brand svg{width:34px;height:34px;display:block;flex:none}
+.brand-name{font-weight:800;font-size:1.06rem;letter-spacing:.5px;color:var(--brand)}
+.brand-name span{color:var(--accent)}
+nav.main-nav{margin-left:auto;display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+nav.main-nav a{
+  font-size:.9rem;color:var(--ink-soft);padding:7px 10px;border-radius:var(--radius-sm);
+  font-weight:500;white-space:nowrap;
+}
+nav.main-nav a:hover{background:var(--paper-2);color:var(--brand);text-decoration:none}
+.head-actions{display:flex;align-items:center;gap:8px;flex:none}
+.search-wrap{position:relative}
+.search-wrap input{
+  width:170px;padding:7px 10px 7px 30px;border:1px solid var(--line);border-radius:999px;
+  background:var(--card);font-size:.85rem;color:var(--ink);font-family:inherit;
+}
+.search-wrap .sicon{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:var(--ink-soft)}
+.search-results{
+  position:absolute;top:calc(100% + 6px);right:0;width:280px;max-height:300px;overflow:auto;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-hover);padding:6px;display:none;z-index:60;
+}
+.search-results.open{display:block}
+.search-results a{display:block;padding:7px 9px;border-radius:6px;font-size:.85rem;color:var(--ink)}
+.search-results a:hover{background:var(--paper-2);text-decoration:none}
+.search-results .sr-empty{padding:10px;font-size:.82rem;color:var(--ink-soft)}
+.menu-btn{
+  display:none;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);
+  width:40px;height:38px;align-items:center;justify-content:center;cursor:pointer;color:var(--brand);
+}
+.menu-btn svg{width:20px;height:20px}
+
+/* 首屏 */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(1200px 380px at 82% -10%, rgba(201,162,39,.18), transparent 60%),
+    radial-gradient(900px 400px at -10% 110%, rgba(47,93,76,.16), transparent 60%),
+    var(--paper);
+  border-bottom:1px solid var(--line);
+}
+.hero-inner{
+  max-width:var(--maxw);margin:0 auto;padding:clamp(34px,5vw,64px) var(--space);
+  display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(20px,4vw,52px);align-items:center;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;font-size:.8rem;color:var(--brand-2);
+  background:rgba(47,93,76,.08);border:1px solid rgba(47,93,76,.25);
+  padding:4px 12px;border-radius:999px;margin-bottom:16px;font-weight:600;
+}
+.hero-tag i{width:6px;height:6px;background:var(--accent);border-radius:50%;display:inline-block}
+h1{font-size:var(--fs-h1);letter-spacing:1px;color:var(--brand);margin-bottom:14px}
+h1 .hl{color:var(--accent);position:relative}
+.hero-desc{font-size:clamp(.98rem,1.3vw,1.08rem);color:var(--ink-soft);max-width:38em;margin-bottom:22px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;padding:11px 20px;border-radius:999px;
+  font-weight:600;font-size:.92rem;border:1px solid transparent;cursor:pointer;
+  font-family:inherit;transition:transform .2s,box-shadow .2s,background .2s;
+}
+.btn-primary{background:var(--brand);color:#f6f3ea;box-shadow:var(--shadow)}
+.btn-primary:hover{background:var(--brand-2);transform:translateY(-2px);box-shadow:var(--shadow-hover);text-decoration:none}
+.btn-ghost{background:transparent;color:var(--brand);border-color:var(--brand)}
+.btn-ghost:hover{background:rgba(27,58,47,.06);transform:translateY(-2px);text-decoration:none}
+.hero-stats{display:flex;gap:clamp(14px,3vw,34px);flex-wrap:wrap}
+.hero-stats div{font-size:.82rem;color:var(--ink-soft)}
+.hero-stats b{display:block;font-size:1.35rem;color:var(--brand);font-weight:800;line-height:1.2}
+.hero-art{position:relative;min-height:280px}
+.hero-art svg{width:100%;height:auto;display:block;filter:drop-shadow(0 10px 24px rgba(27,58,47,.16))}
+
+/* 主区容器 */
+.layout{max-width:var(--maxw);margin:0 auto;padding:clamp(24px,4vw,52px) var(--space);display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:var(--gap);align-items:start}
+.main-col{min-width:0}
+.side-col{display:flex;flex-direction:column;gap:var(--gap);position:sticky;top:calc(var(--header-h) + var(--bar-h) + 16px)}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(16px,2.2vw,26px);box-shadow:var(--shadow);
+}
+.section{margin-bottom:var(--gap)}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.sec-head h2{font-size:var(--fs-h2);color:var(--brand);display:flex;align-items:center;gap:9px}
+.sec-head h2::before{content:"";width:8px;height:22px;border-radius:3px;background:var(--accent);display:inline-block}
+.sec-more{font-size:.82rem;color:var(--ink-soft);white-space:nowrap}
+.sec-more:hover{color:var(--brand)}
+.lead{color:var(--ink-soft)}
+
+/* 领域概览 */
+.overview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
+.ov-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+.ov-item h3{font-size:.95rem;color:var(--brand);margin-bottom:6px}
+.ov-item p{font-size:.84rem;color:var(--ink-soft);margin:0}
+.ov-num{font-size:1.5rem;font-weight:800;color:var(--accent);line-height:1.1}
+
+/* 精选推荐 网格卡片 */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.feat-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;
+  transition:transform .2s,box-shadow .2s;
+}
+.feat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+.feat-card img{width:100%;height:150px;object-fit:cover}
+.feat-body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.feat-body h3{font-size:1rem;margin-bottom:6px;color:var(--ink)}
+.feat-body p{font-size:.84rem;color:var(--ink-soft);margin:0 0 10px;flex:1}
+.chip-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.chip{
+  font-size:.72rem;padding:2px 9px;border-radius:999px;background:var(--paper-2);
+  color:var(--brand-2);border:1px solid var(--line);white-space:nowrap;
+}
+.chip.accent{background:rgba(201,162,39,.14);border-color:rgba(201,162,39,.4);color:#7a5f0d}
+
+/* 最新更新 紧凑列表 */
+.update-list{list-style:none;padding:0;margin:0}
+.update-list li{
+  display:flex;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line);align-items:baseline;
+}
+.update-list li:last-child{border-bottom:0;padding-bottom:0}
+.up-date{flex:none;width:64px;font-size:.78rem;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.up-date.today{color:var(--danger);font-weight:700}
+.up-body{min-width:0}
+.up-body a{font-weight:600;color:var(--ink);font-size:.93rem}
+.up-body a:hover{color:var(--brand-2)}
+.up-body p{font-size:.8rem;color:var(--ink-soft);margin:2px 0 0}
+
+/* 分类入口 标签索引 */
+.cat-index{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.cat-block h3{font-size:.86rem;color:var(--brand);margin:0 0 8px;letter-spacing:.3px;border-left:3px solid var(--accent);padding-left:8px}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:7px}
+.tag-cloud a{
+  font-size:.78rem;padding:4px 10px;border-radius:7px;background:var(--card);
+  border:1px solid var(--line);color:var(--ink-soft);
+}
+.tag-cloud a:hover{background:var(--brand);color:#fff;border-color:var(--brand);text-decoration:none}
+
+/* 深度解析 */
+.article-body h3{font-size:var(--fs-h3);color:var(--brand);margin:20px 0 8px}
+.article-body p{margin-bottom:.9em}
+.article-body .pullquote{
+  border-left:4px solid var(--accent);background:var(--paper-2);padding:12px 16px;
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-weight:600;color:var(--brand);
+  margin:16px 0;
+}
+.two-col-text{column-count:2;column-gap:26px}
+.check-table{width:100%;border-collapse:collapse;font-size:.84rem;margin:12px 0}
+.check-table th,.check-table td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+.check-table th{background:var(--paper-2);color:var(--brand);font-weight:700;white-space:nowrap}
+.check-table td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.fact{color:var(--brand-2);font-weight:600}
+.spec{color:var(--danger);font-weight:600}
+.quote-line{color:var(--ink-soft);font-size:.86rem}
+
+/* 体验指南 编号步骤 */
+.steps{list-style:none;padding:0;margin:0;counter-reset:step}
+.steps li{
+  position:relative;padding:10px 0 10px 52px;counter-increment:step;border-bottom:1px solid var(--line);
+}
+.steps li:last-child{border-bottom:0}
+.steps li::before{
+  content:counter(step);position:absolute;left:0;top:10px;width:34px;height:34px;border-radius:50%;
+  background:var(--brand);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;
+}
+.steps b{color:var(--ink)}
+.steps p{font-size:.85rem;color:var(--ink-soft);margin:2px 0 0}
+
+/* 对照面板 */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.compare-panel{border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;background:var(--paper-2)}
+.compare-panel.b{border-color:var(--brand);background:rgba(47,93,76,.06)}
+.compare-panel h3{font-size:.95rem;color:var(--brand);margin-bottom:8px}
+.compare-panel ul{font-size:.84rem;color:var(--ink-soft);margin:0;padding-left:1.1em}
+
+/* FAQ */
+details.faq-item{border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--card);margin-bottom:10px;overflow:hidden}
+details.faq-item summary{
+  cursor:pointer;padding:13px 16px;font-weight:600;font-size:.92rem;color:var(--ink);
+  list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;
+}
+details.faq-item summary::-webkit-details-marker{display:none}
+details.faq-item summary::after{content:"+";font-size:1.3rem;color:var(--accent);flex:none;line-height:1}
+details.faq-item[open] summary::after{content:"–"}
+details.faq-item summary:hover{background:var(--paper-2)}
+.faq-ans{padding:0 16px 14px;font-size:.86rem;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:10px}
+
+/* 用户评论 */
+.comments{display:grid;gap:12px}
+.comment{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 15px}
+.avatar{
+  width:38px;height:38px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;
+  font-weight:700;color:#fff;font-size:.85rem;background:var(--brand-2);
+}
+.avatar.c2{background:#8a6d3b}.avatar.c3{background:#4a6b8a}.avatar.c4{background:#7a4a63}.avatar.c5{background:#5b7a4a}
+.comment-body{min-width:0}
+.comment-meta{font-size:.76rem;color:var(--ink-soft);margin-bottom:3px}
+.comment-meta b{color:var(--ink);font-weight:700}
+.comment-body p{font-size:.87rem;margin:0}
+.neg{color:var(--danger)}
+
+/* 资讯 */
+.news-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.news-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 15px}
+.news-item time{font-size:.74rem;color:var(--ink-soft);display:block;margin-bottom:3px}
+.news-item h3{font-size:.92rem;margin-bottom:4px}
+.news-item p{font-size:.82rem;color:var(--ink-soft);margin:0}
+
+/* 相关推荐 */
+.rec-tags{display:flex;flex-wrap:wrap;gap:8px}
+.rec-tags a{
+  font-size:.82rem;padding:6px 13px;border-radius:999px;border:1px solid var(--brand);
+  color:var(--brand);background:transparent;
+}
+.rec-tags a:hover{background:var(--brand);color:#fff;text-decoration:none}
+
+/* 榜单 */
+.rank-list{list-style:none;padding:0;margin:0;counter-reset:rank}
+.rank-list li{
+  display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px dashed var(--line);
+  counter-increment:rank;
+}
+.rank-list li:last-child{border-bottom:0}
+.rank-list li::before{
+  content:counter(rank);flex:none;width:26px;height:26px;border-radius:7px;background:var(--paper-2);
+  color:var(--brand);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.82rem;
+}
+.rank-list li:nth-child(1)::before{background:var(--accent);color:#fff}
+.rank-list li:nth-child(2)::before{background:var(--brand-2);color:#fff}
+.rank-body b{font-size:.92rem;display:block;color:var(--ink)}
+.rank-body span{font-size:.8rem;color:var(--ink-soft)}
+
+/* 时间线 */
+.timeline{list-style:none;padding:0 0 0 20px;margin:0;border-left:2px solid var(--line)}
+.timeline li{position:relative;padding:0 0 16px 16px}
+.timeline li::before{
+  content:"";position:absolute;left:-25px;top:6px;width:10px;height:10px;border-radius:50%;
+  background:var(--accent);border:2px solid var(--paper);
+}
+.timeline time{font-size:.76rem;color:var(--danger);font-weight:700;display:block}
+.timeline b{font-size:.92rem;display:block;color:var(--ink);margin:1px 0}
+.timeline p{font-size:.82rem;color:var(--ink-soft);margin:0}
+
+/* 侧栏 */
+.side-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+.side-card h2{font-size:.95rem;color:var(--brand);margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--accent-soft)}
+.side-nav{list-style:none;padding:0;margin:0;font-size:.85rem}
+.side-nav li a{
+  display:block;padding:6px 9px;border-radius:6px;color:var(--ink-soft);border-left:3px solid transparent;
+}
+.side-nav li a:hover{background:var(--paper-2);color:var(--brand);text-decoration:none}
+.side-nav li a.active{background:rgba(47,93,76,.1);color:var(--brand);border-left-color:var(--accent);font-weight:700}
+.mini-list{list-style:none;padding:0;margin:0;font-size:.83rem}
+.mini-list li{padding:7px 0;border-bottom:1px dashed var(--line)}
+.mini-list li:last-child{border-bottom:0;padding-bottom:0}
+.mini-list a{color:var(--ink);font-weight:600}
+.mini-list span{display:block;color:var(--ink-soft);font-size:.76rem;margin-top:1px}
+.side-note{font-size:.8rem;color:var(--ink-soft);background:var(--paper-2);border-radius:var(--radius-sm);padding:10px 12px;margin-top:10px}
+
+/* 页尾 */
+footer.site-foot{
+  background:var(--brand);color:#dbe4dd;margin-top:clamp(20px,4vw,44px);
+  border-top:4px solid var(--accent);
+}
+.foot-inner{max-width:var(--maxw);margin:0 auto;padding:clamp(28px,4vw,46px) var(--space) 22px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:var(--gap)}
+.foot-brand svg{width:36px;height:36px;margin-bottom:8px}
+.foot-brand .fn{font-weight:800;font-size:1.1rem;color:#fff;margin-bottom:6px}
+.foot-brand p{font-size:.83rem;color:#b9c9bf;margin:0}
+.foot-col h3{font-size:.86rem;color:var(--accent-soft);margin-bottom:8px;letter-spacing:.5px}
+.foot-col a{display:block;color:#c9d6cd;font-size:.83rem;padding:3px 0}
+.foot-col a:hover{color:#fff;text-decoration:underline}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.14);font-size:.76rem;color:#a8bcaf}
+.foot-bottom .fb-inner{max-width:var(--maxw);margin:0 auto;padding:14px var(--space);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* 回到顶部 */
+.to-top{
+  position:fixed;right:18px;bottom:22px;width:46px;height:46px;border-radius:50%;
+  background:var(--brand);color:#fff;border:2px solid var(--accent-soft);cursor:pointer;
+  display:none;align-items:center;justify-content:center;box-shadow:var(--shadow-hover);z-index:70;
+}
+.to-top.show{display:flex}
+.to-top svg{width:20px;height:20px}
+
+@media (max-width:1000px){
+  .layout{grid-template-columns:1fr}
+  .side-col{position:static;order:2}
+  .main-col{order:1}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-art{min-height:0;max-width:440px}
+  .overview-grid{grid-template-columns:repeat(2,1fr)}
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-inner{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  nav.main-nav{
+    display:none;position:absolute;top:calc(var(--header-h) + var(--bar-h));left:0;right:0;
+    background:var(--card);flex-direction:column;align-items:stretch;padding:10px var(--space);
+    border-bottom:1px solid var(--line);box-shadow:var(--shadow-hover);gap:2px;
+  }
+  nav.main-nav.open{display:flex}
+  nav.main-nav a{padding:10px;font-size:.95rem}
+  header.site-head{position:relative}
+  .menu-btn{display:flex}
+  .search-wrap input{width:130px}
+  .head-inner{gap:10px}
+  .overview-grid{grid-template-columns:1fr 1fr}
+  .cat-index{grid-template-columns:1fr}
+  .news-list{grid-template-columns:1fr}
+  .compare{grid-template-columns:1fr}
+  .two-col-text{column-count:1}
+}
+@media (max-width:560px){
+  .feat-grid{grid-template-columns:1fr}
+  .overview-grid{grid-template-columns:1fr}
+  .foot-inner{grid-template-columns:1fr}
+  .brand-name{font-size:.98rem}
+  .search-wrap{display:none}
+  .hero-stats{gap:16px}
+  .announce .ann-text{font-size:.76rem}
+  .to-top{right:12px;bottom:14px;width:42px;height:42px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+  .feat-card:hover,.btn:hover{transform:none}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-stack">
+  <div class="announce" id="announceBar">
+    <span class="ann-dot"></span>
+    <span class="ann-text"><strong>万物皆可踩</strong> · 11月7日「城南夜巷」踩点笔记更新 6 条，新增「旧糖厂文创园」路线</span>
+    <a href="/#latest">查看更新</a>
+  </div>
+  <header class="site-head">
+    <div class="head-inner">
+      <a class="brand" href="/#top" aria-label="万物皆可踩 首页">
+        <svg viewBox="0 0 64 64" aria-hidden="true" role="img">
+          <rect width="64" height="64" rx="14" fill="#1b3a2f"></rect>
+          <path d="M14 44c8-2 12-10 18-18s10-8 18-8" stroke="#e8c56a" stroke-width="5" fill="none" stroke-linecap="round"></path>
+          <circle cx="46" cy="18" r="5" fill="#e8c56a"></circle>
+          <circle cx="18" cy="46" r="5" fill="#f2f0e6"></circle>
+        </svg>
+        <span class="brand-name">万物皆可<span>踩</span></span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="主题导航">
+        <a href="/#overview">领域概览</a>
+        <a href="/#featured">精选推荐</a>
+        <a href="/#deep">深度解析</a>
+        <a href="/#guide">体验指南</a>
+        <a href="/#faq">常见问题</a>
+        <a href="/#rank">踩点榜单</a>
+      </nav>
+      <div class="head-actions">
+        <div class="search-wrap">
+          <svg class="sicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          <input type="search" id="siteSearch" placeholder="搜路线 / 店铺 / 关键词" aria-label="站内搜索">
+          <div class="search-results" id="searchResults" role="listbox"></div>
+        </div>
+        <button class="menu-btn" id="menuBtn" aria-label="展开导航菜单" aria-expanded="false" aria-controls="mainNav">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+</div>
+
+<main id="top">
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="hero-inner">
+      <div>
+        <span class="hero-tag"><i></i>城市漫步 · 踩点笔记与路线复盘</span>
+        <h1 id="heroTitle">万物皆可踩</h1>
+        <p class="hero-desc">把一条街巷走成自己的地图。记录哪家店几点开门、哪条巷子雨后积水、哪段路灯光够不够，用可核对的时间、地点与判断，替代“听说不错”的模糊推荐。</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="/#featured">看本周精选踩点</a>
+          <a class="btn btn-ghost" href="/#guide">读体验指南</a>
+        </div>
+        <div class="hero-stats">
+          <div><b>327</b>条已踩路线</div>
+          <div><b>1,140</b>家实地记录店铺</div>
+          <div><b>48</b>份深度复盘</div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 420 320" role="img" aria-label="城市街巷踩点路线示意图">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#2f5d4c"></stop>
+              <stop offset="1" stop-color="#1b3a2f"></stop>
+            </linearGradient>
+          </defs>
+          <rect x="10" y="24" width="400" height="272" rx="18" fill="#efe9da" stroke="#d9d2bd"></rect>
+          <path d="M40 250h120M180 250h60M260 250h120" stroke="#d9d2bd" stroke-width="2"></path>
+          <path d="M60 230C90 190 60 150 110 120s90 20 130-20 60-30 100-14" stroke="url(#g1)" stroke-width="6" fill="none" stroke-linecap="round" stroke-dasharray="1 12"></path>
+          <circle cx="60" cy="230" r="9" fill="#1b3a2f"></circle>
+          <circle cx="110" cy="120" r="9" fill="#c9a227"></circle>
+          <circle cx="240" cy="100" r="9" fill="#2f5d4c"></circle>
+          <circle cx="340" cy="86" r="11" fill="#c9a227" stroke="#1b3a2f" stroke-width="3"></circle>
+          <rect x="70" y="60" width="54" height="44" rx="6" fill="#fffdf7" stroke="#d9d2bd"></rect>
+          <rect x="150" y="70" width="40" height="40" rx="6" fill="#fffdf7" stroke="#d9d2bd"></rect>
+          <rect x="230" y="56" width="60" height="50" rx="6" fill="#fffdf7" stroke="#d9d2bd"></rect>
+          <path d="M80 74h34M80 86h24" stroke="#2f5d4c" stroke-width="4" stroke-linecap="round"></path>
+          <path d="M160 84h20M160 94h14" stroke="#c9a227" stroke-width="4" stroke-linecap="round"></path>
+          <path d="M242 70h36M242 82h26M242 94h30" stroke="#2f5d4c" stroke-width="4" stroke-linecap="round"></path>
+          <text x="60" y="272" font-size="12" fill="#41544a" font-family="sans-serif">起点 · 地铁口</text>
+          <text x="290" y="272" font-size="12" fill="#41544a" font-family="sans-serif">终点 · 旧糖厂</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="layout">
+    <div class="main-col">
+
+      <section class="section card" id="overview" aria-labelledby="overviewTitle">
+        <div class="sec-head">
+          <h2 id="overviewTitle">领域概览：踩点到底在记录什么</h2>
+          <a class="sec-more" href="/#latest">本周新增 12 条</a>
+        </div>
+        <p class="lead">踩点不是打卡清单的堆叠。一条合格记录至少包含到达时间、停留时长、现场可验证的细节，以及一个能被后来者复用的判断。下面四个维度，是整理每条笔记时固定要填的栏位。</p>
+        <div class="overview-grid" style="margin-top:14px">
+          <div class="ov-item">
+            <div class="ov-num">01</div>
+            <h3>可达与时段</h3>
+            <p>地铁出口编号、步行分钟数、几点后巷口会锁门。11月6日实测，旧糖厂北门17:30关闭，改走东侧通道多花4分钟。</p>
+          </div>
+          <div class="ov-item">
+            <div class="ov-num">02</div>
+            <h3>现场条件</h3>
+            <p>照明、地面材质、雨后积水点、手机信号强弱。城南夜巷第3段无路灯，需自备手电。</p>
+          </div>
+          <div class="ov-item">
+            <div class="ov-num">03</div>
+            <h3>店铺与摊档</h3>
+            <p>营业时间、是否需排队、价格区间、老板是否接受拍照。老周糖水铺周二休息，别白跑。</p>
+          </div>
+          <div class="ov-item">
+            <div class="ov-num">04</div>
+            <h3>可复用判断</h3>
+            <p>什么情况适合来、什么情况别来。带娃的避开晚高峰，摄影的等19点后灯光层次更好。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="featured" aria-labelledby="featuredTitle">
+        <div class="sec-head">
+          <h2 id="featuredTitle">精选内容推荐：六条这周值得走的线</h2>
+          <a class="sec-more" href="/#rank">按热度排序 →</a>
+        </div>
+        <div class="feat-grid">
+          <article class="feat-card">
+            <img src="https://picsum.photos/seed/walk-nightlane/600/360" width="600" height="360" loading="lazy" alt="夜晚灯光下的城南旧巷石阶与墙面" style="object-fit:cover">
+            <div class="feat-body">
+              <h3>城南夜巷三段式走法</h3>
+              <p>从地铁3号线C口出发，经老邮局、糖水铺到旧糖厂东门，全程2.1公里。19点后出发，避开放学人流。</p>
+              <div class="chip-row"><span class="chip accent">夜巷</span><span class="chip">2.1公里</span><span class="chip">约90分钟</span></div>
+            </div>
+          </article>
+          <article class="feat-card">
+            <img src="https://picsum.photos/seed/walk-cafe/600/360" width="600" height="360" loading="lazy" alt="临街咖啡馆靠窗座位与木质吧台" style="object-fit:cover">
+            <div class="feat-body">
+              <h3>临街咖啡馆座位性价比表</h3>
+              <p>对比林荫路7家咖啡馆的插座数、最低消费和噪音时段。靠窗位下午2点后基本被占满。</p>
+              <div class="chip-row"><span class="chip accent">咖啡馆</span><span class="chip">7家对比</span></div>
+            </div>
+          </article>
+          <article class="feat-card">
+            <img src="https://picsum.photos/seed/walk-market/600/360" width="600" height="360" loading="lazy" alt="清晨菜市场摊位上的蔬菜与价签" style="object-fit:cover">
+            <div class="feat-body">
+              <h3>早市六点半进场路线</h3>
+              <p>水产区先走、蔬菜区后逛，能避开8点的结账长队。摊主老陈说，周四人最少。</p>
+              <div class="chip-row"><span class="chip accent">早市</span><span class="chip">六点半</span><span class="chip">省排队</span></div>
+            </div>
+          </article>
+          <article class="feat-card">
+            <img src="https://picsum.photos/seed/walk-river/600/360" width="600" height="360" loading="lazy" alt="傍晚河堤步道与跑步的人影" style="object-fit:cover">
+            <div class="feat-body">
+              <h3>河堤步道跑步踩点</h3>
+              <p>3.8公里一圈，两个补水点。11月5日实测，第2公里处路灯有一半不亮，夜跑穿反光衣。</p>
+              <div class="chip-row"><span class="chip accent">河堤</span><span class="chip">3.8公里</span></div>
+            </div>
+          </article>
+          <article class="feat-card">
+            <img src="https://picsum.photos/seed/walk-bookshop/600/360" width="600" height="360" loading="lazy" alt="旧书店书架与堆叠的二手书" style="object-fit:cover">
+            <div class="feat-body">
+              <h3>旧书店淘书时间窗</h3>
+              <p>周三下午补货，周五傍晚剩货最多。二楼社科区光线暗，带个小手电翻书脊方便。</p>
+              <div class="chip-row"><span class="chip accent">旧书店</span><span class="chip">补货日</span></div>
+            </div>
+          </article>
+          <article class="feat-card">
+            <img src="https://picsum.photos/seed/walk-temple/600/360" width="600" height="360" loading="lazy" alt="巷口小庙屋檐与香炉细节" style="object-fit:cover">
+            <div class="feat-body">
+              <h3>巷口小庙与周边摊位</h3>
+              <p>初一十五人多，平日清晨安静。庙前石阶湿滑，雨后拍摄注意脚下。</p>
+              <div class="chip-row"><span class="chip accent">小庙</span><span class="chip">清晨</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section card" id="latest" aria-labelledby="latestTitle">
+        <div class="sec-head">
+          <h2 id="latestTitle">最新更新</h2>
+          <a class="sec-more" href="/#news">相关资讯 →</a>
+        </div>
+        <ul class="update-list">
+          <li>
+            <span class="up-date today">今天 09:12</span>
+            <div class="up-body"><a href="/#featured">旧糖厂文创园东门开放时间改为 10:00–21:30</a><p>园区公告牌11月7日更新，北门仍17:30关闭。夜巷路线终点的落款已同步调整。</p></div>
+          </li>
+          <li>
+            <span class="up-date">昨天 18:40</span>
+            <div class="up-body"><a href="/#deep">林荫路咖啡馆座位实测第二轮</a><p>补测7家店工作日下午2点至4点的空位率，最低为32%，最高为78%。</p></div>
+          </li>
+          <li>
+            <span class="up-date">11月5日</span>
+            <div class="up-body"><a href="/#guide">河堤步道夜间照明缺位记录</a><p>第2公里东侧6盏灯中有4盏不亮，已标注在路线图的第2段。</p></div>
+          </li>
+          <li>
+            <span class="up-date">11月4日</span>
+            <div class="up-body"><a href="/#comments">读者补充：老周糖水铺周二休息</a><p>两位读者先后确认，店铺门口手写牌与记录一致。</p></div>
+          </li>
+          <li>
+            <span class="up-date">11月2日</span>
+            <div class="up-body"><a href="/#rank">本月踩点榜单首次纳入早市路线</a><p>早市六点半进场路线进入前十，评分依据到访完成度与信息完整度。</p></div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section card" id="categories" aria-labelledby="catTitle">
+        <div class="sec-head">
+          <h2 id="catTitle">分类入口</h2>
+          <span class="sec-more">按场景挑，不按热度挑</span>
+        </div>
+        <div class="cat-index">
+          <div class="cat-block">
+            <h3>按时间</h3>
+            <div class="tag-cloud">
+              <a href="/#featured">夜巷路线</a>
+              <a href="/#featured">早市进场</a>
+              <a href="/#deep">午后咖啡馆</a>
+              <a href="/#guide">傍晚河堤</a>
+            </div>
+          </div>
+          <div class="cat-block">
+            <h3>按人群</h3>
+            <div class="tag-cloud">
+              <a href="/#guide">带娃踩点</a>
+              <a href="/#guide">独行安全</a>
+              <a href="/#featured">摄影取景</a>
+              <a href="/#comments">遛狗路线</a>
+            </div>
+          </div>
+          <div class="cat-block">
+            <h3>按类型</h3>
+            <div class="tag-cloud">
+              <a href="/#featured">旧书店</a>
+              <a href="/#featured">菜市场</a>
+              <a href="/#deep">咖啡馆座位</a>
+              <a href="/#rank">文创园</a>
+            </div>
+          </div>
+          <div class="cat-block">
+            <h3>按记录</h3>
+            <div class="tag-cloud">
+              <a href="/#deep">路线复盘</a>
+              <a href="/#news">开放时间变更</a>
+              <a href="/#rank">踩点榜单</a>
+              <a href="/#faq">新手指南</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section card article-body" id="deep" aria-labelledby="deepTitle">
+        <div class="sec-head">
+          <h2 id="deepTitle">深度解析：一次踩点值不值，先看这三件事</h2>
+          <span class="sec-more">全页唯一长文</span>
+        </div>
+
+        <h3>判断一：到达成本被严重低估</h3>
+        <p>踩点笔记里最容易写虚的是“交通方便”。我把近一个月12条路线按实际耗时拆开，发现地铁到站后的步行时间平均占总耗时的31%，最高一条达47%。所谓“地铁口出来就到”，对照的是出站闸机到地面的距离，不是到目的地的距离。</p>
+        <table class="check-table">
+          <caption style="caption-side:top;text-align:left;font-size:.8rem;color:#41544a;padding-bottom:6px">11月1日—11月6日四条路线到达耗时拆分（分钟）</caption>
+          <thead><tr><th>路线</th><th class="num">地铁在车</th><th class="num">出站步行</th><th class="num">找入口</th><th class="num">合计</th></tr></thead>
+          <tbody>
+            <tr><td>城南夜巷</td><td class="num">22</td><td class="num">11</td><td class="num">4</td><td class="num">37</td></tr>
+            <tr><td>河堤步道</td><td class="num">18</td><td class="num">15</td><td class="num">6</td><td class="num">39</td></tr>
+            <tr><td>早市</td><td class="num">25</td><td class="num">8</td><td class="num">2</td><td class="num">35</td></tr>
+            <tr><td>旧糖厂文创园</td><td class="num">29</td><td class="num">14</td><td class="num">9</td><td class="num">52</td></tr>
+          </tbody>
+        </table>
+        <p>“找入口”那一栏最容易被忽略。旧糖厂北门17:30关闭，东门要绕行，现场指示牌又只标了园区内部道路，第一次来的人平均多花9分钟。这一项在11月7日的更新里已经写进路线说明。</p>
+
+        <div class="pullquote">可被反驳的具体判断：凡是到达耗时里“找入口”超过5分钟的路线，都不适合塞进两小时内的行程。</div>
+
+        <h3>判断二：店铺评分与座位舒适度关系不大</h3>
+        <p>林荫路7家咖啡馆在点评平台上的评分集中在4.2到4.6之间，差距不到0.4。但按插座数量、桌面宽度、噪音分贝三项拆分，差异被放大。评分4.5的一家店，工作日下午实测环境噪音68分贝，靠窗位桌面宽42厘米，放一台14寸笔记本加一杯咖啡就满了。</p>
+        <table class="check-table">
+          <thead><tr><th>店铺（路名+门牌）</th><th class="num">平台评分</th><th class="num">插座数</th><th class="num">噪音 dB</th><th class="num">最低消费</th></tr></thead>
+          <tbody>
+            <tr><td>林荫路 12 号 慢半拍</td><td class="num">4.5</td><td class="num">3</td><td class="num">68</td><td class="num">28 元</td></tr>
+            <tr><td>林荫路 27 号 木桌</td><td class="num">4.3</td><td class="num">9</td><td class="num">52</td><td class="num">25 元</td></tr>
+            <tr><td>林荫路 41 号 转角</td><td class="num">4.6</td><td class="num">5</td><td class="num">61</td><td class="num">32 元</td></tr>
+          </tbody>
+        </table>
+        <p>噪音数值用手机分贝计在下午2:30至3:00、同一靠窗位置采集，误差约±3分贝，但排序稳定。“木桌”评分最低，插座最多、环境最安静，适合需要久坐的人。平台高评分更多来自出片效果与店员态度，与久坐条件不是一回事。</p>
+
+        <h3>判断三：开放时间变化比新店开张更值得记</h3>
+        <p>11月1日到11月7日，我记录的12条路线里，有3处开放时间发生变动：旧糖厂东门延长至21:30、老邮局侧门改为仅工作日开放、早市水产区提前到5:50开秤。这类变动在社交平台上传播慢，现场公告牌却是第一手。</p>
+        <ul class="timeline" style="margin-top:12px">
+          <li><time>11月1日</time><b>老邮局侧门调整</b><p>公告贴于正门右侧，仅工作日9:00–17:00开放，周末关闭。</p></li>
+          <li><time>11月3日</time><b>早市水产区开秤提前</b><p>摊主老陈口述，5:50起陆续开秤，比原来早10分钟。</p></li>
+          <li><time>11月7日</time><b>旧糖厂东门延时</b><p>园区公告牌更新，10:00–21:30，北门维持17:30关闭。</p></li>
+        </ul>
+        <p class="quote-line">说明：以上信息分别为现场拍照记录、摊主口述与公告牌照片，来源层级不同；“老邮局周末关闭”仅见公告牌，官网未同步，属于待核实状态。</p>
+
+        <h3>把判断拆成可核对的清单</h3>
+        <p>逛完一个点，用下面五项给自己打分，比“感觉不错”更能积累可复用的经验。每项0到2分，满分10分，低于6分的路线不建议写进推荐。</p>
+        <table class="check-table">
+          <thead><tr><th>核对项</th><th>具体问法</th><th class="num">分值</th></tr></thead>
+          <tbody>
+            <tr><td>到达可控</td><td>找入口是否超过5分钟？有无备选门？</td><td class="num">0–2</td></tr>
+            <tr><td>时段匹配</td><td>计划停留的时间段与店铺营业是否有重叠？</td><td class="num">0–2</td></tr>
+            <tr><td>现场条件</td><td>照明、地面、噪音是否影响目的？</td><td class="num">0–2</td></tr>
+            <tr><td>信息完整</td><td>价格、休息日、拍照限制是否问清？</td><td class="num">0–2</td></tr>
+            <tr><td>可复用</td><td>下次再来或推荐给别人，能否直接说清怎么走？</td><td class="num">0–2</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section card" id="guide" aria-labelledby="guideTitle">
+        <div class="sec-head">
+          <h2 id="guideTitle">体验指南：第一次踩点的五步</h2>
+          <span class="sec-more">适合零基础</span>
+        </div>
+        <ol class="steps">
+          <li><b>先定目的，再定地点</b><p>为了拍照、为了久坐、为了买菜，选的地方完全不同。目的一变，评分标准就变，别拿咖啡馆的标准看菜市场。</p></li>
+          <li><b>查两个时间</b><p>到达时间和店铺休息日。到得太早，门没开；避开休息日，能省一趟白跑。老周糖水铺周二休息，就是被读者提醒后补上的。</p></li>
+          <li><b>出站先定位，再动身</b><p>用出口编号而不是“附近”。地铁3号线C口与A口到城南夜巷入口，步行差6分钟。</p></li>
+          <li><b>现场记录三个数</b><p>到达时刻、实际停留分钟、花费金额。三个数比一大段形容词更能帮别人判断。</p></li>
+          <li><b>回来写一句可反驳的判断</b><p>比如“这条线不适合带6岁以下孩子，第3段台阶无扶手”。能被反驳，才有讨论价值。</p></li>
+        </ol>
+
+        <h3 style="margin-top:20px;font-size:var(--fs-h3);color:var(--brand)">两种记录方式对照</h3>
+        <div class="compare" style="margin-top:10px">
+          <div class="compare-panel">
+            <h3>碎片式记录</h3>
+            <ul>
+              <li>边走边记，每条一个点</li>
+              <li>适合发现突发变化：临时闭店、修路</li>
+              <li>缺点：缺少前后顺序，回头难看懂</li>
+              <li>工具：手机备忘 + 照片时间戳</li>
+            </ul>
+          </div>
+          <div class="compare-panel b">
+            <h3>路线式复盘</h3>
+            <ul>
+              <li>回来后按时间线整理成一条线</li>
+              <li>适合推荐给别人照着走</li>
+              <li>缺点：耗时，需补记遗漏节点</li>
+              <li>工具：路线图 + 到达/离开时刻表</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section card" id="faq" aria-labelledby="faqTitle">
+        <div class="sec-head">
+          <h2 id="faqTitle">常见问题</h2>
+          <span class="sec-more">按提问频率排序</span>
+        </div>
+
+        <details class="faq-item" open>
+          <summary>踩点笔记里的时间为什么精确到分钟？</summary>
+          <div class="faq-ans">因为“到了”和“进去了”是两件事。地铁到站、出站步行、找到入口、真正进入现场，四个节点的时间加起来才是到达成本。只写“大约半小时”，无法判断卡在哪一段。</div>
+        </details>
+        <details class="faq-item">
+          <summary>夜巷路线一个人走安全吗？</summary>
+          <div class="faq-ans">城南夜巷第3段约200米无路灯，两侧是围墙，21点后人流明显减少。独自走建议20点前通过该段，并自备手电。带同伴的话，这一段影响不大。</div>
+        </details>
+        <details class="faq-item">
+          <summary>咖啡馆座位数据是怎么测的？</summary>
+          <div class="faq-ans">同一时段、同一靠窗位置，用手机分贝计连续采样30分钟取中位数，插座数按可用且通电的计数。误差存在，但同一方法下排序可比。</div>
+        </details>
+        <details class="faq-item">
+          <summary>旧糖厂文创园晚上几点关？</summary>
+          <div class="faq-ans">11月7日公告牌显示东门开放至21:30，北门仍是17:30关闭。走夜巷路线的从东门进，别按老笔记走北门。</div>
+        </details>
+        <details class="faq-item">
+          <summary>早市几点去最合适？</summary>
+          <div class="faq-ans">想拍摊位选6点到6点半，人少、货全。想买水产，5:50开秤后半小时内下手。8点后结账要排队，周四人相对最少。</div>
+        </details>
+        <details class="faq-item">
+          <summary>带小孩踩点要注意哪些路段？</summary>
+          <div class="faq-ans">河堤步道第2公里路灯缺位，夜跑和推车都不建议。旧糖厂东门进去有一段石阶，无扶手，推婴儿车改走南侧坡道，多绕约120米。</div>
+        </details>
+      </section>
+
+      <section class="section card" id="comments" aria-labelledby="commentsTitle">
+        <div class="sec-head">
+          <h2 id="commentsTitle">用户评论</h2>
+          <span class="sec-more">含未采纳意见</span>
+        </div>
+        <div class="comments">
+          <div class="comment">
+            <div class="avatar c2">阿</div>
+            <div class="comment-body">
+              <div class="comment-meta"><b>阿澄</b> · 11月6日 21:04</div>
+              <p>照夜巷路线走的，第3段确实黑，手机手电够用。糖水铺的姜撞奶12块，分量比想象中小，但味道对得起价格。</p>
+            </div>
+          </div>
+          <div class="comment">
+            <div class="avatar c3">老</div>
+            <div class="comment-body">
+              <div class="comment-meta"><b>老鹿</b> · 11月5日 08:31</div>
+              <p>早市6点半到，水产区已经排了七八个人。摊主说5:50就开秤了，这条更新挺及时，之前别的攻略写的还是6:10。</p>
+            </div>
+          </div>
+          <div class="comment">
+            <div class="avatar c4">林</div>
+            <div class="comment-body">
+              <div class="comment-meta"><b>林间慢跑</b> · 11月4日 19:22</div>
+              <p class="neg">河堤那6盏灯我上周跑了两次，还是暗的，说已标注但现场没有任何提示牌。夜跑的人自己当心吧。</p>
+            </div>
+          </div>
+          <div class="comment">
+            <div class="avatar c5">苏</div>
+            <div class="comment-body">
+              <div class="comment-meta"><b>苏打水</b> · 11月3日 15:10</div>
+              <p>林荫路那家“木桌”插座多是真的，但桌子有点矮，坐久了腰不舒服。评分低大概也有原因，别只看插座数。</p>
+            </div>
+          </div>
+          <div class="comment">
+            <div class="avatar">周</div>
+            <div class="comment-body">
+              <div class="comment-meta"><b>周周</b> · 11月2日 10:47</div>
+              <p>带娃走了旧糖厂南侧坡道，比石阶好推车。但坡道尽头有个小台阶，还是得抬一下，指南里可以补一句。</p>
+            </div>
+          </div>
+          <div class="comment">
+            <div class="avatar c2">镜</div>
+            <div class="comment-body">
+              <div class="comment-meta"><b>镜湖</b> · 11月1日 22:16</div>
+              <p>旧书店周三补货这个信息准。我下午四点到的，社科区确实上了两箱新书，不过光线是真暗，手机电筒照着看很别扭。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section card" id="news" aria-labelledby="newsTitle">
+        <div class="sec-head">
+          <h2 id="newsTitle">相关资讯</h2>
+          <span class="sec-more">日期均在11月8日前</span>
+        </div>
+        <div class="news-list">
+          <article class="news-item">
+            <time datetime="2026-11-07">11月7日</time>
+            <h3>旧糖厂东门延时，夜巷路线终点调整</h3>
+            <p>园区公告牌更新开放时段为10:00–21:30，北门17:30关闭不变。相关路线说明已同步。</p>
+          </article>
+          <article class="news-item">
+            <time datetime="2026-11-06">11月6日</time>
+            <h3>老邮局侧门仅工作日开放</h3>
+            <p>正门右侧公告显示周末关闭。周末踩点的需改走正门，多绕约3分钟。</p>
+          </article>
+          <article class="news-item">
+            <time datetime="2026-11-05">11月5日</time>
+            <h3>河堤步道第2公里照明缺位</h3>
+            <p>东侧6盏灯中4盏不亮，已记录位置。夜跑建议穿反光衣或改走西侧辅道。</p>
+          </article>
+          <article class="news-item">
+            <time datetime="2026-11-03">11月3日</time>
+            <h3>早市水产区开秤提前至5:50</h3>
+            <p>摊主老陈口述，比原时间早10分钟。想挑好货的需相应提前到场。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section card" id="rank" aria-labelledby="rankTitle">
+        <div class="sec-head">
+          <h2 id="rankTitle">踩点榜单：本月前六</h2>
+          <span class="sec-more">按完成度与信息完整度</span>
+        </div>
+        <ol class="rank-list">
+          <li>
+            <div class="rank-body"><b>城南夜巷三段式走法</b><span>完成度 96% · 路线信息最完整，含两处备选入口</span></div>
+          </li>
+          <li>
+            <div class="rank-body"><b>早市六点半进场路线</b><span>完成度 93% · 11月3日开秤时间更新后复评</span></div>
+          </li>
+          <li>
+            <div class="rank-body"><b>临街咖啡馆座位性价比表</b><span>完成度 90% · 7家店含噪音与插座实测</span></div>
+          </li>
+          <li>
+            <div class="rank-body"><b>旧书店淘书时间窗</b><span>完成度 86% · 补货规律来自连续三周记录</span></div>
+          </li>
+          <li>
+            <div class="rank-body"><b>河堤步道跑步踩点</b><span>完成度 84% · 照明缺位影响夜跑评分</span></div>
+          </li>
+          <li>
+            <div class="rank-body"><b>巷口小庙与周边摊位</b><span>完成度 81% · 台阶湿滑一项待补充照片</span></div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section card" id="recommend" aria-labelledby="recTitle">
+        <div class="sec-head">
+          <h2 id="recTitle">相关推荐</h2>
+          <span class="sec-more">换个场景继续踩</span>
+        </div>
+        <div class="rec-tags">
+          <a href="/#featured">城南夜巷拍照机位</a>
+          <a href="/#deep">咖啡馆久坐座位</a>
+          <a href="/#featured">早市砍价时段</a>
+          <a href="/#guide">带娃推车路线</a>
+          <a href="/#featured">旧书店补货日</a>
+          <a href="/#guide">独行夜路安全</a>
+          <a href="/#rank">文创园开放时间</a>
+          <a href="/#news">周末闭门地点</a>
+        </div>
+      </section>
+
+    </div>
+
+    <aside class="side-col" aria-label="侧栏导航与补充">
+      <nav class="side-card" aria-label="目录">
+        <h2>本页目录</h2>
+        <ul class="side-nav" id="sideNav">
+          <li><a href="/#overview">领域概览</a></li>
+          <li><a href="/#featured">精选内容推荐</a></li>
+          <li><a href="/#latest">最新更新</a></li>
+          <li><a href="/#categories">分类入口</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">体验指南</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#comments">用户评论</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+          <li><a href="/#rank">踩点榜单</a></li>
+          <li><a href="/#recommend">相关推荐</a></li>
+        </ul>
+      </nav>
+      <div class="side-card">
+        <h2>本周待核实</h2>
+        <ul class="mini-list">
+          <li><a href="/#deep">老邮局周末关闭</a><span>仅见公告牌，官网未同步</span></li>
+          <li><a href="/#featured">糖水铺休息日</a><span>两位读者确认，待补门口照片</span></li>
+          <li><a href="/#guide">旧糖厂南侧坡道台阶</a><span>读者反馈，尚未实测</span></li>
+        </ul>
+        <p class="side-note">标注“待核实”的条目，均为单一来源或缺少现场复测，引用时请保留原始出处与日期。</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#2f5d4c"></rect><path d="M14 44c8-2 12-10 18-18s10-8 18-8" stroke="#e8c56a" stroke-width="5" fill="none" stroke-linecap="round"></path><circle cx="46" cy="18" r="5" fill="#e8c56a"></circle><circle cx="18" cy="46" r="5" fill="#f2f0e6"></circle></svg>
+      <div class="fn">万物皆可踩</div>
+      <p>把一条街走成一份可核对的记录，地点、时间、判断都留给后来的人。</p>
+    </div>
+    <div class="foot-col">
+      <h3>路线</h3>
+      <a href="/#featured">城南夜巷</a>
+      <a href="/#featured">早市进场</a>
+      <a href="/#featured">河堤步道</a>
+      <a href="/#featured">旧书店</a>
+    </div>
+    <div class="foot-col">
+      <h3>方法</h3>
+      <a href="/#deep">到达成本拆分</a>
+      <a href="/#guide">五步踩点法</a>
+      <a href="/#deep">座位实测</a>
+      <a href="/#faq">常见问题</a>
+    </div>
+    <div class="foot-col">
+      <h3>互动</h3>
+      <a href="/#comments">读者补充</a>
+      <a href="/#rank">月度榜单</a>
+      <a href="/#news">开放时间变更</a>
+      <a href="/#recommend">相关推荐</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="fb-inner">
+      <span>页面数据为示例整理，日期截至 2026-11-08；路线与店铺信息请以现场公告为准。</span>
+      <span>© 2026 万物皆可踩 · 内容示例，非商业引用请注明来源</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="回到顶部">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 14l6-6 6 6"></path></svg>
+</button>
+
+<script>
+(function(){
+  "use strict";
+
+  /* 移动端菜单 */
+  var menuBtn = document.getElementById('menuBtn');
+  var mainNav = document.getElementById('mainNav');
+  if (menuBtn && mainNav) {
+    menuBtn.addEventListener('click', function(){
+      var open = mainNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuBtn.setAttribute('aria-label', open ? '收起导航菜单' : '展开导航菜单');
+    });
+    mainNav.addEventListener('click', function(e){
+      if (e.target.tagName === 'A' && window.innerWidth <= 760) {
+        mainNav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  /* 本站索引：用于搜索与滚动高亮 */
+  var sectionData = [
+    {id:'overview', title:'领域概览', words:'概览 记录 时段 可达 现场条件 店铺 判断 栏位'},
+    {id:'featured', title:'精选内容推荐', words:'城南夜巷 早市 咖啡馆 座位 河堤 旧书店 小庙 路线 推荐'},
+    {id:'latest', title:'最新更新', words:'旧糖厂 东门 开放时间 河堤 照明 糖水铺 周二 更新'},
+    {id:'categories', title:'分类入口', words:'夜巷 早市 咖啡馆 河堤 带娃 独行 摄影 遛狗 分类'},
+    {id:'deep', title:'深度解析', words:'到达成本 入口 咖啡馆 评分 座位 噪音 插座 开放时间 变化 核对'},
+    {id:'guide', title:'体验指南', words:'五步 目的 时间 出口 记录 复盘 碎片 路线'},
+    {id:'faq', title:'常见问题', words:'时间 夜巷 安全 座位 数据 旧糖厂 早市 小孩 问题'},
+    {id:'comments', title:'用户评论', words:'姜撞奶 早市 河堤 路灯 木桌 坡道 旧书店 评论'},
+    {id:'news', title:'相关资讯', words:'旧糖厂 老邮局 河堤 早市 资讯 公告'},
+    {id:'rank', title:'踩点榜单', words:'榜单 夜巷 早市 咖啡馆 旧书店 河堤 小庙 完成度'},
+    {id:'recommend', title:'相关推荐', words:'推荐 机位 久坐 砍价 推车 补货 安全 闭门'}
+  ];
+
+  /* 搜索 */
+  var input = document.getElementById('siteSearch');
+  var results = document.getElementById('searchResults');
+  if (input && results) {
+    var render = function(q){
+      q = q.trim().toLowerCase();
+      if (!q) { results.classList.remove('open'); results.innerHTML = ''; return; }
+      var hits = sectionData.filter(function(it){
+        return (it.title + ' ' + it.words).toLowerCase().indexOf(q) !== -1;
+      });
+      if (!hits.length) {
+        results.innerHTML = '<div class="sr-empty">没有找到“' + q.replace(/[<>&]/g,'') + '”。试试：夜巷、咖啡馆、早市、旧书店。</div>';
+      } else {
+        results.innerHTML = hits.map(function(it){
+          return '<a href="/#' + it.id + '">' + it.title + '<span style="color:#8a958e;font-size:.76rem"> · /#' + it.id + '</span></a>';
+        }).join('');
+      }
+      results.classList.add('open');
+    };
+    input.addEventListener('input', function(){ render(input.value); });
+    input.addEventListener('focus', function(){ if (input.value.trim()) render(input.value); });
+    document.addEventListener('click', function(e){
+      if (!results.contains(e.target) && e.target !== input) results.classList.remove('open');
+    });
+    input.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') { results.classList.remove('open'); input.blur(); }
+    });
+    results.addEventListener('click', function(e){
+      if (e.target.tagName === 'A') results.classList.remove('open');
+    });
+  }
+
+  /* 滚动高亮 */
+  var sideLinks = Array.prototype.slice.call(document.querySelectorAll('#sideNav a'));
+  var targets = sideLinks.map(function(a){
+    var id = a.getAttribute('href').replace('/#','');
+    return document.getElementById(id);
+  }).filter(Boolean);
+  var ticking = false;
+  function highlight(){
+    var y = window.scrollY + (64 + 40 + 40);
+    var current = null;
+    targets.forEach(function(el){
+      if (el && el.offsetTop <= y) current = el.id;
+    });
+    sideLinks.forEach(function(a){
+      var id = a.getAttribute('href').replace('/#','');
+      if (id === current) a.classList.add('active'); else a.classList.remove('active');
+    });
+    ticking = false;
+  }
+  if (targets.length) {
+    window.addEventListener('scroll', function(){
+      if (!ticking) { window.requestAnimationFrame(highlight); ticking = true; }
+    }, {passive:true});
+    highlight();
+  }
+
+  /* 回到顶部 */
+  var toTop = document.getElementById('toTop');
+  if (toTop) {
+    window.addEventListener('scroll', function(){
+      if (window.scrollY > 420) toTop.classList.add('show'); else toTop.classList.remove('show');
+    }, {passive:true});
+    toTop.addEventListener('click', function(){
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "万物皆可踩",
+  "description": "城市漫步与踩点笔记站点，记录路线、店铺与现场判断。",
+  "inLanguage": "zh-CN"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"踩点笔记里的时间为什么精确到分钟？","acceptedAnswer":{"@type":"Answer","text":"因为“到了”和“进去了”是两件事。地铁到站、出站步行、找到入口、真正进入现场，四个节点的时间加起来才是到达成本。"}},
+    {"@type":"Question","name":"夜巷路线一个人走安全吗？","acceptedAnswer":{"@type":"Answer","text":"城南夜巷第3段约200米无路灯，21点后人流明显减少。独自走建议20点前通过该段并自备手电。"}},
+    {"@type":"Question","name":"旧糖厂文创园晚上几点关？","acceptedAnswer":{"@type":"Answer","text":"11月7日公告牌显示东门开放至21:30，北门仍是17:30关闭，走夜巷路线从东门进。"}},
+    {"@type":"Question","name":"早市几点去最合适？","acceptedAnswer":{"@type":"Answer","text":"想拍摊位选6点到6点半；想买水产，5:50开秤后半小时内下手；8点后结账要排队。"}}
+  ]
+}
+</script>
+</body>
+            </html>
